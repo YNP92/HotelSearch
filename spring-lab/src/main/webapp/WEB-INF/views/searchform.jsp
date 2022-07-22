@@ -19,13 +19,11 @@
 </head>
 
 <body>
-	<form id="searchform" action="/searchform" method="post">
+	<form action="/searchform" method="post">
 		<h1>Hotel Search</h1>
 		<br>
-		<h3>City:</h3>
-		<br>
-		
-			<select required autofocus>
+			<label for="city">Choose a City:</label>
+			<select name="city" required autofocus>
 				<option value=""></option>
 				<c:forEach var="hotel" items="${hotels}">
 					<option value="${hotel.city}" >${hotel.city}</option>

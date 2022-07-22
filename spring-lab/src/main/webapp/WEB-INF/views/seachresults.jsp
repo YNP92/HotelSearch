@@ -27,9 +27,9 @@
 		</thead>
 		<tbody>
 
-			<c:forEach var="hotel" items="${hotels}">
+			<c:forEach var="hotel" items="${matchedSearch}">
 				<tr>
-					<td class= "hotelname">${hotel.name}</td>
+					<td class= "hotelname">${hotel.hotelName}</td>
 					<td class= "hotelprice">${hotel.pricePerNight}</td>
 				</tr>
 			</c:forEach>

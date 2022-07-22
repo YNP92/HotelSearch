@@ -1,5 +1,6 @@
 package co.grandcircus.springlab;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,15 @@ public class HomeController {
 		// do i have to instantiate hotels every mapping or can i do it once under the
 		// class declaration?
 		List<Hotel> hotelsList = hotelRepo.findAll();
-		for (Hotel hotels : hotelsList) {
-			if (hotels.getCity().equals(city)) {
-				model.addAttribute("hotels", hotels);
+		List<Hotel> matchedSearch = new ArrayList<Hotel>();
+		for (Hotel hotel : hotelsList) {
+			if (hotel.getCity().equals(city)) {
+				matchedSearch.add(hotel);
 			}
 		}
+		model.addAttribute("city",city);
+		model.addAttribute("matchedSearch", matchedSearch);
+		
 		return "seachresults";
 	}
 
