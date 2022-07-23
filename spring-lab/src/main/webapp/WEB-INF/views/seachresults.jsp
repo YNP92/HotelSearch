@@ -19,18 +19,20 @@
 </head>
 
 <body>
+	<h1>Hotels in ${city}</h1>
 	<table>
 		<thead>
 			<tr>
-				<th class="city">Hotels in ${city}</th>
+				<th style="text-align:left"class="city">Hotel name</th>
+				<th style="text-align:right"class="city">Price per night</th>
 			</tr>
 		</thead>
 		<tbody>
 
 			<c:forEach var="hotel" items="${matchedSearch}">
 				<tr>
-					<td class= "hotelname">${hotel.hotelName}</td>
-					<td class= "hotelprice">${hotel.pricePerNight}</td>
+					<td style="text-align:right" class= "hotelname">${hotel.hotelName}</td><br>
+					<td style="text-align:right" class= "hotelprice">${hotel.pricePerNight}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
