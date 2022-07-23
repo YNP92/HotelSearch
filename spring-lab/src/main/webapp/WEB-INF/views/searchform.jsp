@@ -25,8 +25,8 @@
 			<label for="city">Choose a City:</label>
 			<select name="city" required autofocus>
 				<option value=""></option>
-				<c:forEach var="hotel" items="${hotels}">
-					<option value="${hotel.city}" >${hotel.city}</option>
+				<c:forEach var="availableCities" items="${availableCities}">
+					<option value="${availableCities}" >${availableCities}</option>
 				</c:forEach>
 			</select> 
 			<input type="submit" value="Search">

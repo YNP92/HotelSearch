@@ -1,7 +1,9 @@
 package co.grandcircus.springlab;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +17,21 @@ public class HomeController {
 
 	@Autowired
 	private HotelRepository hotelRepo;
-	
 
 	@RequestMapping("/")
 	public String showSearch(Model model) {
 		List<Hotel> hotelsList = hotelRepo.findAll();
-		model.addAttribute("hotels", hotelsList);
+		Set<String> availableCities = new HashSet<String>();
+	
+		for (Hotel hotel : hotelsList) {
+//			System.out.println(hotel.toString());
+			if (!availableCities.contains(hotel.getCity())) {
+				availableCities.add(hotel.getCity());
+			}
+		}
+//		System.out.println(availableCities.toString());
+		System.out.println(availableCities.getClass());
+		model.addAttribute("availableCities", availableCities);
 		return "searchform";
 	}
 
@@ -35,9 +46,9 @@ public class HomeController {
 				matchedSearch.add(hotel);
 			}
 		}
-		model.addAttribute("city",city);
+		model.addAttribute("city", city);
 		model.addAttribute("matchedSearch", matchedSearch);
-		
+
 		return "seachresults";
 	}
 
